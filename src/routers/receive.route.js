@@ -31,9 +31,9 @@ router.post('/create-folder', async (req, res) => {
     res.render('uploadimage')
   })
   
-  router.post('/upload-images', upload.array('photos'), async (req, res) => {
-    
-    const allImage = req.files.every(file=>{
+  router.post('/upload-images'/* , upload.array('photos') */, async (req, res) => {
+    res.status(201).send("Llegó el pedido")
+    /* const allImage = req.files.every(file=>{
       const fileInfo = file.mimetype
       return fileInfo.startsWith('image/')
     })
@@ -95,7 +95,7 @@ router.post('/create-folder', async (req, res) => {
       res.status(500).send('Error al subir las imágenes a Google Drive');
     }}else{
       res.sendStatus(401)
-    }
+    } */
   });
 
 
