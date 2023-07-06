@@ -33,7 +33,7 @@ router.post('/create-folder', async (req, res) => {
   
   router.post('/upload-images', upload.array('photos'), async (req, res) => {
     if(req.files){
-      console.log(req.files.length)
+      console.log(req.files[0])
     }else{
       console.log("No hay imagenes procesadas");
     }
