@@ -33,6 +33,7 @@ router.post('/create-folder', async (req, res) => {
   
   router.post('/upload-images'/* , upload.array('photos') */, async (req, res) => {
     res.status(201).send("Llegó el pedido")
+    console.log("entrando")
     /* const allImage = req.files.every(file=>{
       const fileInfo = file.mimetype
       return fileInfo.startsWith('image/')
