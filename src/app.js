@@ -1,6 +1,8 @@
 import express from 'express'
 import handlebars from 'express-handlebars'
 import routerReceive from './routers/receive.route.js'
+import { __dirname } from './utils.js'
+
 
 
 
@@ -11,10 +13,10 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 app.engine('handlebars', handlebars.engine())
-app.set('views',  'src/views')
+app.set('views',  __dirname+'/views')
 app.set('view engine', 'handlebars')
 
-app.use(express.static( 'src/public'))
+app.use(express.static( __dirname+'/public'))
 
 app.use('/', routerReceive)
 
