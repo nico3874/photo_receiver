@@ -1,0 +1,117 @@
+body {
+    background-image: url('../fondos/fondo_4.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #fff;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+h1 {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 37px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.instructions li {
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+.instructions li:hover {
+    color: #009688;
+}
+
+label {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+}
+
+.btn-primary {
+    background-color: #009688;
+    border-color: #009688;
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loading-spinner {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #009688;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-message {
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    margin-top: 20px;
+}
+
+/*-------------Diseños adaptables Tablet----------------*/
+
+@media screen and (max-width:1200px){
+    h1{
+        font-size: 30px;
+    }
+
+}
+
+/*------------------Diseño adaptado para Celulares----------------------*/
+
+@media screen and (max-width:768px){
+    h1{
+        font-size: 18px;
+    }
+
+}

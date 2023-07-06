@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanesa Fernandez Fotografía</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <link rel="stylesheet" href={{style}}>
+    
+</head>
+
+<body>
+    <div class="container">
+        <h1>Vanesa Fernandez Fotografía</h1>
+        <h2>Autorevelado</h2>
+
+        <ul class="instructions">
+            <li>Ingresa tu nombre</li>
+            <li>Elige la medida</li>
+            <li>Carga las fotos</li>
+        </ul>
+
+        <form method="" action="/upload-images" enctype="multipart/form-data" id="upload-form">
+            <div class="mb-3">
+                <label for="folderName">Ingresa tu nombre y apellido</label>
+                <input type="text" class="form-control" id="folderNamename" name="folderName" required>
+            </div>
+
+            <div class="mb-3">
+                <label>Medidas</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="size" id="size1" value="10x15cm" required>
+                    <label class="form-check-label" for="size1">10 x 15 cm</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="size" id="size2" value="13x18cm">
+                    <label class="form-check-label" for="size2">13 x 18 cm</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="size" id="size3" value="15x21cm">
+                    <label class="form-check-label" for="size3">15 x 21 cm</label>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="photos">Carga las fotos</label>
+                <input type="file" class="form-control" id="photos" name="photos" multiple required accept="image/*">
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="btnSubmit">Envía tu pedido</button>
+        </form>
+    </div>
+
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-message">Subiendo archivos...</div>
+    </div>
+
+    <script src="/js/response.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const listItems = document.querySelectorAll('.instructions li');
+        listItems.forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('completed');
+            });
+        });
+    </script>
+    {{!-- <script>
+        const form = document.getElementById('upload-form');
+        const loadingOverlay = document.getElementById('loading-overlay');
+
+        form.addEventListener('submit', (event) => {
+            
+            loadingOverlay.style.display = 'flex';
+        });
+    </script> --}}
+</body>
+
+</html>
