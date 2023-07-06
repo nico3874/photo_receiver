@@ -31,9 +31,13 @@ router.post('/create-folder', async (req, res) => {
     res.render('uploadimage')
   })
   
-  router.post('/upload-images'/* , upload.array('photos') */, async (req, res) => {
-    res.status(201).send("Llegó el pedido")
-    console.log("entrando")
+  router.post('/upload-images', upload.array('photos'), async (req, res) => {
+    if(req.files){
+      console.log(req.files.length)
+    }else{
+      console.log("No hay imagenes procesadas");
+    }
+    
     /* const allImage = req.files.every(file=>{
       const fileInfo = file.mimetype
       return fileInfo.startsWith('image/')
