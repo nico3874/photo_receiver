@@ -10,7 +10,7 @@ form.addEventListener('submit', function(event) {
     
     const formData = new FormData(form);
 
-    fetch('/upload-images', {
+    fetch('https://vanesa-revelado.up.railway.app/upload-images', {
       method: 'POST',
       body: formData
     }).then(response=> {
@@ -42,26 +42,3 @@ btnSubmit.addEventListener('click', function() {
   form.reportValidity(); // Verifica la validez del formulario y muestra los mensajes de error si los campos requeridos no están completos
 });
 
-/* btnSubmit.addEventListener('click', (event)=>{
-    event.preventDefault()
-    
-    loadingOverlay.style.display = 'flex'
-
-    let formData = new FormData(form)
-   
-    fetch('/upload-images', {
-    method: "POST",
-    body: formData    
-  }).then(respose=> {
-      return respose
-    
-  }).then(data=>{
-    data.status==200 && (loadingOverlay.style.display = 'none', alert('Las imagenes se subieron correctamente'))
-    data.status != 200 && (loadingOverlay.style.display = 'none', alert('Las imagenes no pudieron enviarse'))
-   
-    location.reload()
-    
-    
-  })
-})
- */
