@@ -19,6 +19,7 @@
     "fs-extra": "^11.1.1",
     "googleapis": "^118.0.0",
     "multer": "^1.4.5-lts.1",
+    "node-openssl": "^0.0.2-security",
     "sharp": "^0.32.1",
     "stream": "^0.0.2"
   }
