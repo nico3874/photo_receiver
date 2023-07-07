@@ -2,7 +2,7 @@ import multer from 'multer'
 import { google } from 'googleapis'
 import {fileURLToPath } from 'url'
 import {dirname} from 'path'
-import { email, key, scopes } from './config'
+import { email, key, scopes } from './config.js'
 
 ///Esto es para las rutas relativas
 
