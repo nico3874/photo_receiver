@@ -2,12 +2,7 @@ import multer from 'multer'
 import { google } from 'googleapis'
 import {fileURLToPath } from 'url'
 import {dirname} from 'path'
-import dotenv from 'dotenv'
-
-dotenv.config()
-const email = process.env.email
-const scopes = process.env.scopes
-const key = process.env.key
+import { email, key, scopes } from './config'
 
 ///Esto es para las rutas relativas
 
@@ -33,7 +28,7 @@ const KEYFILEPATH =  __dirname + '/keys/claves2.json'
 const auth = new google.auth.JWT({
   
   /* keyFile : KEYFILEPATH,  */ 
-  email:key,
+  email:email,
   scopes: [scopes],
   key:key   
 });
