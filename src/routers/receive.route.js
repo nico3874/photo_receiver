@@ -59,7 +59,7 @@ router.post('/create-folder', async (req, res) => {
     const imageFiles = req.files; 
     const folderId = IdFolder; 
     console.log(folderName);
-  /* 
+  
     if (!imageFiles || imageFiles.length === 0) {
       return res.status(400).send('No se ha proporcionado ningún archivo de imagen');
     }
@@ -99,7 +99,7 @@ router.post('/create-folder', async (req, res) => {
       console.error('Error al subir las imágenes a Google Drive:', error.message);
       res.status(500).send('Error al subir las imágenes a Google Drive');
     }}else{
-      res.sendStatus(401) */
+      res.sendStatus(401)
     }
   });
 
