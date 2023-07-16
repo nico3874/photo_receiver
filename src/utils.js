@@ -2,7 +2,9 @@ import multer from 'multer'
 import { google } from 'googleapis'
 import {fileURLToPath } from 'url'
 import {dirname} from 'path'
-import { email, key, scopes } from './config.js'
+import { scopes, key, email } from './config.js'
+
+
 
 ///Esto es para las rutas relativas
 
@@ -29,8 +31,8 @@ const auth = new google.auth.JWT({
   
   /* keyFile : KEYFILEPATH,  */ 
   email:email,
-  scopes: [scopes],
-  key:key   
+  scopes:[scopes],
+  key:key  
 });
 
 
@@ -45,7 +47,7 @@ export async function createFolderOnDrive(folderName) {
     const folderMetadata = {
       name: folderName,
       mimeType: 'application/vnd.google-apps.folder',
-      parents: ['1eRXr_QSHn-MHTUjmKzAt3h9AyeD4ez0x']
+      parents: ['129VmJpKIOSYtvtx76txg2hS98bc3PDav']
     };
     
     const response = await driveClient.files.create({

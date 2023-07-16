@@ -32,11 +32,12 @@ router.post('/create-folder', async (req, res) => {
   })
   
   router.post('/upload-images', upload.array('photos'), async (req, res) => {
+    /* console.log('hola..........');
     if(req.files){
       console.log(req.files[0])
     }else{
       console.log("No hay imagenes procesadas");
-    }
+    } */
     
     const allImage = req.files.every(file=>{
       const fileInfo = file.mimetype
