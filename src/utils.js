@@ -32,7 +32,7 @@ const auth = new google.auth.JWT({
   /* keyFile : KEYFILEPATH,  */ 
   email:email,
   scopes:[scopes],
-  keyGoogle:keyGoogle  
+  key:keyGoogle  
 });
 
 
