@@ -2,7 +2,7 @@ import multer from 'multer'
 import { google } from 'googleapis'
 import {fileURLToPath } from 'url'
 import {dirname} from 'path'
-import { scopes, key, email } from './config.js'
+import { scopes, keyGoogle, email } from './config.js'
 
 
 
@@ -32,7 +32,7 @@ const auth = new google.auth.JWT({
   /* keyFile : KEYFILEPATH,  */ 
   email:email,
   scopes:[scopes],
-  key:key  
+  keyGoogle:keyGoogle  
 });
 
 
