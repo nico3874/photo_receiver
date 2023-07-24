@@ -47,7 +47,7 @@ export async function createFolderOnDrive(folderName) {
     const folderMetadata = {
       name: folderName,
       mimeType: 'application/vnd.google-apps.folder',
-      parents: ['129VmJpKIOSYtvtx76txg2hS98bc3PDav']
+      parents: ['1axaX2TfWtMZuBMpa1XWydN756xiLuP3G']
     };
     
     const response = await driveClient.files.create({
