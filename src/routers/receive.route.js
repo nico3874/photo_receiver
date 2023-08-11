@@ -75,8 +75,8 @@ router.post('/create-folder', async (req, res) => {
         fs.createReadStream(imageFile.path) 
   
         const compressedImage = await sharp(imageFile.path)
-          .resize(800) // Ajusta el tamaño de la imagen según tus necesidades
-          .jpeg({ quality: 80 }) // Ajusta la calidad de la compresión según tus necesidades
+          /* .resize(800) */ // Ajusta el tamaño de la imagen según tus necesidades
+          .jpeg({ quality: 100 }) // Ajusta la calidad de la compresión según tus necesidades
           .toBuffer();
   
         const response = await driveClient.files.create({
