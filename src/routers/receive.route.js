@@ -3,6 +3,9 @@ import fs from 'fs'
 import sharp from 'sharp'
 import { Readable } from 'stream'
 import { upload, driveClient, createFolderOnDrive } from "../utils.js";
+import path from "path";
+import { __dirname } from "../utils.js";
+import cron from'node-cron'
 
 
 
@@ -14,6 +17,12 @@ router.get('/', (req, res)=>{
 })
 
 router.post('/create-folder', async (req, res) => {
+
+  /* const folderPath = path.join(__dirname, 'photos');
+  fs.readdirSync(folderPath).forEach(file => {
+  const filePath = path.join(folderPath, file);
+  fs.unlinkSync(filePath);
+}); */
     
     const folderName = req.body.folderName; // El nombre de la carpeta proviene del campo de texto del formulario
     
@@ -32,14 +41,9 @@ router.post('/create-folder', async (req, res) => {
   })
   
   router.post('/upload-images', upload.array('photos'), async (req, res) => {
-    /* console.log('hola..........');
-    if(req.files){
-      console.log(req.files[0])
-    }else{
-      console.log("No hay imagenes procesadas");
-    } */
     
-    const allImage = req.files.every(file=>{
+    
+      const allImage = req.files.every(file=>{
       const fileInfo = file.mimetype
       return fileInfo.startsWith('image/')
     })
@@ -72,7 +76,7 @@ router.post('/create-folder', async (req, res) => {
           parents: [folderId],
         };
   
-        fs.createReadStream(imageFile.path) 
+       
   
         const compressedImage = await sharp(imageFile.path)
           /* .resize(800) */ // Ajusta el tamaño de la imagen según tus necesidades
@@ -88,10 +92,15 @@ router.post('/create-folder', async (req, res) => {
         });
   
         // Eliminar el archivo temporal después de subirlo a Google Drive
-        
+        const imageStream = fs.createReadStream(imageFile.path);
+          imageStream.on('close', () => {
+      // Código para eliminar el archivo temporal
+          fs.unlinkSync(imageFile.path);
+          });
         
         console.log(`Imagen "${imageFile.originalname}" subida a Google Drive con ID: ${response.data.id}`);
       }
+      
       
       
       res.send('Las imágenes han sido subidas correctamente a Google Drive');
@@ -103,6 +112,9 @@ router.post('/create-folder', async (req, res) => {
       res.sendStatus(401)
     }
   });
+
+  // Eliminar la carpeta temporal después de subir todas las imágenes
+ 
 
 
 export default router

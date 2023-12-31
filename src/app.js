@@ -4,11 +4,32 @@ import routerReceive from './routers/receive.route.js'
 import { __dirname } from './utils.js'
 import cors from 'cors'
 import { PORT } from './config.js'
+import cron from "node-cron"
+import fs from "fs"
+import path from 'path'
 
 
+const folderPath = path.join(__dirname, 'photos');
 
+cron.schedule('*/1 * * * *', () => {
+    emptyFolder(folderPath);
+  });
 
-
+  function emptyFolder(folder) {
+    fs.readdir(folder, (err, files) => {
+      if (err) throw err;
+  
+      for (const file of files) {
+        const filePath = path.join(folder, file);
+  
+        // Elimina cada archivo en la carpeta
+        fs.unlink(filePath, err => {
+          if (err) throw err;
+          console.log(`Eliminado: ${filePath}`);
+        });
+      }
+    });
+  }
 
 
 const app = express()
@@ -28,3 +49,7 @@ app.use('/', routerReceive)
 
 
 app.listen(PORT, ()=>console.log('Servidor corriendo.....'))
+
+
+  
+  //Nota Importante: Cuando quice hacer la funcion emptyFolder como arrow function, no funcioonó. Hay que hacerla como function EmptyFolser(folder)...
