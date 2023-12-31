@@ -31,9 +31,9 @@ app.use('/', routerReceive)
 app.listen(PORT, ()=>console.log('Servidor corriendo.....'))
 
 
-const folderPath = path.join(__dirname, 'photos');
+//const folderPath = path.join(__dirname, 'photos');
 
-cron.schedule('*/1 * * * *', () => {
+/* cron.schedule('1 * * * *', () => {
     emptyFolder(folderPath);
   });
 
@@ -44,14 +44,14 @@ cron.schedule('*/1 * * * *', () => {
       for (const file of files) {
         const filePath = path.join(folder, file);
   
-        // Elimina cada archivo en la carpeta
+        
         fs.unlink(filePath, err => {
           if (err) throw err;
           console.log(`Eliminado: ${filePath}`);
         });
       }
     });
-  }
+  } */
 
 
   
