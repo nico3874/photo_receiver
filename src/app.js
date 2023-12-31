@@ -9,6 +9,28 @@ import fs from "fs"
 import path from 'path'
 
 
+
+
+
+const app = express()
+
+
+app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+
+app.engine('handlebars', handlebars.engine())
+app.set('views',  __dirname+'/views')
+app.set('view engine', 'handlebars')
+
+app.use(express.static( __dirname+'/public'))
+
+app.use('/', routerReceive)
+
+
+app.listen(PORT, ()=>console.log('Servidor corriendo.....'))
+
+
 const folderPath = path.join(__dirname, 'photos');
 
 cron.schedule('*/1 * * * *', () => {
@@ -30,25 +52,6 @@ cron.schedule('*/1 * * * *', () => {
       }
     });
   }
-
-
-const app = express()
-
-
-app.use(cors())
-app.use(express.json())
-app.use(express.urlencoded({extended: true}))
-
-app.engine('handlebars', handlebars.engine())
-app.set('views',  __dirname+'/views')
-app.set('view engine', 'handlebars')
-
-app.use(express.static( __dirname+'/public'))
-
-app.use('/', routerReceive)
-
-
-app.listen(PORT, ()=>console.log('Servidor corriendo.....'))
 
 
   
