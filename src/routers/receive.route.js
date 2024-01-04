@@ -91,7 +91,7 @@ router.get('/', (req, res)=>{
     }
   });
 
-  // Eliminar la carpeta temporal después de subir todas las imágenes
+  
  
 
 

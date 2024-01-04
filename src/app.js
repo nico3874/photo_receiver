@@ -31,9 +31,11 @@ app.use('/', routerReceive)
 app.listen(PORT, ()=>console.log('Servidor corriendo.....'))
 
 
-/* const folderPath = path.join(__dirname, 'photos');
+// Eliminar la carpeta temporal después de subir todas las imágenes
 
-cron.schedule('*1 * * * *', () => {
+const folderPath = path.join(__dirname, 'photos');
+
+cron.schedule('*/1 * * * *', () => {
     emptyFolder(folderPath);
   });
 
@@ -50,9 +52,18 @@ cron.schedule('*1 * * * *', () => {
           console.log(`Eliminado: ${filePath}`);
         });
       }
+
+      
+
+      
+       
     });
-  } */
+  }
 
 
   
   //Nota Importante: Cuando quice hacer la funcion emptyFolder como arrow function, no funcioonó. Hay que hacerla como function EmptyFolser(folder)...
+
+
+  
+  

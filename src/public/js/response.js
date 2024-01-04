@@ -10,7 +10,7 @@ form.addEventListener('submit', function(event) {
     
     const formData = new FormData(form);
 
-    fetch('https://vanesa-revelado.up.railway.app/upload-images', {
+    fetch('/upload-images', {
       method: 'POST',
       body: formData
     }).then(response=> {
