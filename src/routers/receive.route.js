@@ -16,31 +16,11 @@ router.get('/', (req, res)=>{
    
 })
 
-router.post('/create-folder', async (req, res) => {
-
-  /* const folderPath = path.join(__dirname, 'photos');
-  fs.readdirSync(folderPath).forEach(file => {
-  const filePath = path.join(folderPath, file);
-  fs.unlinkSync(filePath);
-}); */
-    
-    const folderName = req.body.folderName; // El nombre de la carpeta proviene del campo de texto del formulario
-    
-    try {
-      const folderId = await createFolderOnDrive(folderName);
-      await res.send(`Carpeta "${folderName}" creada en el Google Drive del servidor. ID: ${folderId}`)
-      await res.render('uploadimage');
-    } catch (error) {
-      console.error('Error al crear la carpeta:', error.message);
-      res.status(500).send('Error al crear la carpeta');
-    }
-  });
-
-  router.get('/upload-image', (req, res)=>{
-    res.render('uploadimage')
+  router.post('/upload-images', (req, res)=>{
+    res.send('Estoy escuchando')
   })
   
-  router.post('/upload-images', upload.array('photos'), async (req, res) => {
+  router.post('/upload-imagess', upload.array('photos'), async (req, res) => {
     
     
       const allImage = req.files.every(file=>{
