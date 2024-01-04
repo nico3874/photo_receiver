@@ -16,11 +16,9 @@ router.get('/', (req, res)=>{
    
 })
 
-  router.post('/upload-images', (req, res)=>{
-    res.send('Estoy escuchando')
-  })
   
-  router.post('/upload-imagess', upload.array('photos'), async (req, res) => {
+  
+  router.post('/upload-images', upload.array('photos'), async (req, res) => {
     
     
       const allImage = req.files.every(file=>{
