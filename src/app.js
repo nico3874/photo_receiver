@@ -4,9 +4,6 @@ import routerReceive from './routers/receive.route.js'
 import { __dirname } from './utils.js'
 import cors from 'cors'
 import { PORT } from './config.js'
-import cron from "node-cron"
-import fs from "fs"
-import path from 'path'
 
 
 
@@ -31,38 +28,6 @@ app.use('/', routerReceive)
 app.listen(PORT, ()=>console.log('Servidor corriendo.....'))
 
 
-// Eliminar la carpeta temporal después de subir todas las imágenes
-
-/* const folderPath = path.join(__dirname, 'photos');
-
-cron.schedule('*1 * * * *', () => {
-    emptyFolder(folderPath);
-  });
-
-  function emptyFolder(folder) {
-    fs.readdir(folder, (err, files) => {
-      if (err) throw err;
-  
-      for (const file of files) {
-        const filePath = path.join(folder, file);
-  
-        
-        fs.unlink(filePath, err => {
-          if (err) throw err;
-          console.log(`Eliminado: ${filePath}`);
-        });
-      }
-
-      
-
-      
-       
-    });
-  }
- */
-
-  
-  //Nota Importante: Cuando quice hacer la funcion emptyFolder como arrow function, no funcioonó. Hay que hacerla como function EmptyFolser(folder)...
 
 
   

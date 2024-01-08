@@ -1,11 +1,11 @@
 import { Router } from "express";
-import fs from 'fs'
+import fs, { unlinkSync } from 'fs'
 import sharp from 'sharp'
 import { Readable } from 'stream'
 import { upload, driveClient, createFolderOnDrive } from "../utils.js";
-import path from "path";
+
 import { __dirname } from "../utils.js";
-import cron from'node-cron'
+
 
 
 
@@ -59,7 +59,7 @@ router.get('/', (req, res)=>{
         const compressedImage = await sharp(imageFile.path)
           /* .resize(800) */ // Ajusta el tamaño de la imagen según tus necesidades
           .jpeg({ quality: 100 }) // Ajusta la calidad de la compresión según tus necesidades
-          .toBuffer();
+          /* .toBuffer(); */
   
         const response = await driveClient.files.create({
           requestBody: imageMetadata,
@@ -68,13 +68,10 @@ router.get('/', (req, res)=>{
             body:Readable.from(compressedImage),
           },
         });
+
+        fs.unlinkSync(__dirname+'/photos/'+imageFile.originalname)
   
-        // Eliminar el archivo temporal después de subirlo a Google Drive
-        const imageStream = fs.createReadStream(imageFile.path);
-          imageStream.on('close', () => {
-      // Código para eliminar el archivo temporal
-          fs.unlinkSync(imageFile.path);
-          });
+        
         
         console.log(`Imagen "${imageFile.originalname}" subida a Google Drive con ID: ${response.data.id}`);
       }
